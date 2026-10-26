@@ -1,0 +1,339 @@
+{
+  "name": "agent-handoff-ste",
+  "version": "0.1.0",
+  "schemaVersion": 1,
+  "license": "MIT",
+  "language": "zh",
+  "summary": "给交接、交付说明和操作步骤用的中文写作清单。",
+  "disclaimer": "本清单受 ASD-STE100 的写作规则启发。它是独立文本。它不代表 STEMG，也不提供 STE 认证。",
+  "inspiredBy": {
+    "work": "ASD-STE100",
+    "holder": "ASD Simplified Technical English Maintenance Group (STEMG)",
+    "url": "https://www.asd-ste100.org/",
+    "relation": "inspired-by-writing-rule-intent"
+  },
+  "audience": ["agent-author", "human-reviewer"],
+  "terms": [
+    {
+      "term": "交接",
+      "meaning": "交给接手人的说明。"
+    },
+    {
+      "term": "交付说明",
+      "meaning": "说明本次交出了什么的交接。"
+    },
+    {
+      "term": "接手人",
+      "meaning": "下一位阅读并执行的人。"
+    },
+    {
+      "term": "作者",
+      "meaning": "写下这篇交接的一方，可以是人，也可以是智能体。"
+    },
+    {
+      "term": "智能体",
+      "meaning": "起草或修改交接的 AI 代理。"
+    },
+    {
+      "term": "对象",
+      "meaning": "交接里被反复提到的事物。"
+    },
+    {
+      "term": "名称",
+      "meaning": "该对象在本篇里的唯一叫法。"
+    },
+    {
+      "term": "步骤",
+      "meaning": "要求接手人执行的句子。"
+    },
+    {
+      "term": "备注",
+      "meaning": "只提供信息、不要求动作的句子。"
+    },
+    {
+      "term": "警告",
+      "meaning": "指出损害风险并写明后果的句子。"
+    },
+    {
+      "term": "用语表",
+      "meaning": "本篇里「对象 → 唯一名称」的对照。"
+    },
+    {
+      "term": "阻塞",
+      "meaning": "不解除就不能继续的障碍。"
+    }
+  ],
+  "labels": {
+    "glossary": "用语表",
+    "outcome": "本次交出",
+    "next": "接手人的下一件事",
+    "done": "已完成",
+    "left": "未完成",
+    "steps": "步骤",
+    "note": "备注",
+    "warning": "警告",
+    "blocker": "阻塞",
+    "blockerOwner": "能解除的人",
+    "blockerStop": "解除前不要做"
+  },
+  "shortReview": [
+    "handoff.outcome",
+    "handoff.next",
+    "handoff.split-status",
+    "term.one-name",
+    "sentence.name-actor",
+    "note.not-step"
+  ],
+  "procedure": [
+    "标出圈子俚语、同义轮换、没有施事的句子、超长句和超过三层的名词串。",
+    "先写用语表，再改句子。",
+    "按条件、动作、结果或限制的顺序重排步骤。",
+    "按清单规则的顺序逐条检查。",
+    "若仍读不出谁对什么做了什么，就补上施事并拆开该句。"
+  ],
+  "sections": [
+    {
+      "id": "terminology",
+      "title": "Terminology / 用语"
+    },
+    {
+      "id": "sentences",
+      "title": "Sentences / 句子"
+    },
+    {
+      "id": "structure",
+      "title": "Structure / 结构"
+    },
+    {
+      "id": "steps",
+      "title": "Steps / 步骤、备注与警告"
+    },
+    {
+      "id": "handoff",
+      "title": "Handoff / 交接内容"
+    },
+    {
+      "id": "bounds",
+      "title": "Bounds / 边界"
+    }
+  ],
+  "rules": [
+    {
+      "id": "term.one-name",
+      "section": "terminology",
+      "kind": "require",
+      "text": "同一对象全程只用一个名称。",
+      "check": "搜索全文，确认没有第二个名称指向该对象。"
+    },
+    {
+      "id": "term.no-swap",
+      "section": "terminology",
+      "kind": "require",
+      "text": "选定一个动词之后，全程用这个动词表示该动作。",
+      "check": "列出动作动词，确认同一个动作没有同义替换。"
+    },
+    {
+      "id": "term.define-once",
+      "section": "terminology",
+      "kind": "require",
+      "text": "领域术语在首次出现时写出全称，之后只用该全称或当时指定的一个简称。",
+      "check": "确认每个简称都对应同一个全称。"
+    },
+    {
+      "id": "term.no-slang",
+      "section": "terminology",
+      "kind": "forbid",
+      "text": "不要用圈子俚语当作术语。",
+      "check": "把接手人无法从本篇看懂的说法换成普通说法，或在该说法首次出现时写出定义。"
+    },
+    {
+      "id": "term.keep-proper",
+      "section": "terminology",
+      "kind": "require",
+      "text": "路径、文件名、命令和角色名保持原文，解释只写在原文后面。",
+      "check": "对照来源，确认这些专名没有被改写。"
+    },
+    {
+      "id": "term.glossary",
+      "section": "terminology",
+      "kind": "require",
+      "text": "名称可能冲突时，先写用语表。",
+      "check": "名称有冲突时就补上用语表。"
+    },
+    {
+      "id": "term.glossary-row",
+      "section": "terminology",
+      "kind": "require",
+      "text": "用语表的每一行写成「对象 → 唯一名称」。",
+      "check": "逐行确认都是这个格式。"
+    },
+    {
+      "id": "sentence.one-idea",
+      "section": "sentences",
+      "kind": "require",
+      "text": "一句话只写一个意思。",
+      "check": "一句里能拆出两个动作或两个结论时，就拆开。"
+    },
+    {
+      "id": "sentence.name-actor",
+      "section": "sentences",
+      "kind": "require",
+      "text": "骨架小标题和步骤以外的句子写出施事。",
+      "check": "读不出施事就补上施事。"
+    },
+    {
+      "id": "sentence.active",
+      "section": "sentences",
+      "kind": "require",
+      "text": "施事已知时使用主动句。",
+      "check": "把「被…所…」改写成「施事 + 动词 + 对象」。"
+    },
+    {
+      "id": "sentence.condition-first",
+      "section": "sentences",
+      "kind": "require",
+      "text": "先写条件，再写动作。",
+      "check": "把条件移到动作前面，写成「若 A，则做 B。」"
+    },
+    {
+      "id": "sentence.short",
+      "section": "sentences",
+      "kind": "require",
+      "text": "步骤句只保留该步骤需要的词。",
+      "check": "删掉该步骤不需要的词。"
+    },
+    {
+      "id": "sentence.noun-stack",
+      "section": "sentences",
+      "kind": "require",
+      "text": "连续的名词修饰最多三层。",
+      "check": "名词修饰超过三层时，拆成两句，或写成「名称：说明」。"
+    },
+    {
+      "id": "sentence.use-verb",
+      "section": "sentences",
+      "kind": "require",
+      "text": "用动词写动作。",
+      "check": "把「进行…的处理」和「完成…的配置」改成动词句。"
+    },
+    {
+      "id": "sentence.keep-roles",
+      "section": "sentences",
+      "kind": "forbid",
+      "text": "不要为了写短而删掉施事或对象。",
+      "check": "缩短之后仍要能读出谁对什么做了什么。"
+    },
+    {
+      "id": "structure.topic-first",
+      "section": "structure",
+      "kind": "require",
+      "text": "每段的第一句写出本段主题。",
+      "check": "遮住其余句子后，第一句仍要能说明本段在讲什么。"
+    },
+    {
+      "id": "structure.one-topic",
+      "section": "structure",
+      "kind": "require",
+      "text": "一段只写一个主题。",
+      "check": "一段里出现第二个主题时，另起一段。"
+    },
+    {
+      "id": "structure.list",
+      "section": "structure",
+      "kind": "require",
+      "text": "两个以上的并列项写成竖列表。",
+      "check": "把连写的并列项拆成竖列表。"
+    },
+    {
+      "id": "structure.list-lead",
+      "section": "structure",
+      "kind": "require",
+      "text": "竖列表的导语以冒号结束。",
+      "check": "给每个竖列表补上以冒号结束的导语。"
+    },
+    {
+      "id": "structure.order",
+      "section": "structure",
+      "kind": "require",
+      "text": "按「条件、动作、结果或限制」排列步骤。",
+      "check": "确认条件在动作之前，结果或限制在动作之后。"
+    },
+    {
+      "id": "step.imperative",
+      "section": "steps",
+      "kind": "require",
+      "text": "步骤写成祈使句，施事默认是接手人。",
+      "check": "把步骤改成祈使句。"
+    },
+    {
+      "id": "note.not-step",
+      "section": "steps",
+      "kind": "require",
+      "text": "备注只写信息。",
+      "check": "把备注里要求人做的事移到步骤。"
+    },
+    {
+      "id": "warning.consequence",
+      "section": "steps",
+      "kind": "require",
+      "text": "警告写明后果。",
+      "check": "每条警告都写出不做或做错会造成的损害。"
+    },
+    {
+      "id": "handoff.outcome",
+      "section": "handoff",
+      "kind": "require",
+      "text": "交接和交付说明的开头写出本次交出了什么。",
+      "check": "读第一段并用一句话复述交出的东西，复述不出就补上。"
+    },
+    {
+      "id": "handoff.next",
+      "section": "handoff",
+      "kind": "require",
+      "text": "开头写出接手人的下一件事。",
+      "check": "指出下一件事，并且这个动作只有一个。"
+    },
+    {
+      "id": "handoff.split-status",
+      "section": "handoff",
+      "kind": "require",
+      "text": "交接和交付说明分开列出已完成的事和未完成的事。",
+      "check": "确认「已完成」和「未完成」都出现；没有未完成的事时，在「未完成」下写「无」。"
+    },
+    {
+      "id": "handoff.where",
+      "section": "handoff",
+      "kind": "require",
+      "text": "需要接手人打开某处时，写出路径、命令或链接的原文。",
+      "check": "需要定位时，确认文中有可直接复制的原文。"
+    },
+    {
+      "id": "handoff.blocker",
+      "section": "handoff",
+      "kind": "require",
+      "text": "若有阻塞，依次写明阻塞、能解除它的人，以及解除前禁止的动作。",
+      "check": "有阻塞时，按顺序写出「阻塞」「能解除的人」「解除前不要做」。"
+    },
+    {
+      "id": "bounds.no-certification",
+      "section": "bounds",
+      "kind": "forbid",
+      "text": "不要声称本文符合 ASD-STE100，也不要声称已通过 STE 认证。",
+      "check": "删掉「符合 ASD-STE100」和「已通过 STE 认证」这类断言。"
+    },
+    {
+      "id": "bounds.no-dictionary",
+      "section": "bounds",
+      "kind": "forbid",
+      "text": "不要把英文受控词表逐词译成中文来当成本清单的规则。",
+      "check": "用中文交接里能检查的行为来写新规则。"
+    },
+    {
+      "id": "bounds.out-of-scope",
+      "section": "bounds",
+      "kind": "forbid",
+      "text": "不要把本清单用于闲聊、创意文案，或已经锁定口吻的产品文案。",
+      "check": "文类不是交接、交付说明或操作步骤时，停止套用本清单。"
+    }
+  ]
+}
